@@ -1,6 +1,6 @@
 @extends('layouts.tagging')
 
-@section('title', 'SLEMAN TEMPLE RUN')
+@section('title', 'RESULT UGM TRAILRUN 2025')
 
 @section('footer')
 <script>

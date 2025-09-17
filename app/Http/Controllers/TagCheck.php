@@ -34,11 +34,25 @@ class TagCheck extends Controller
             return $return ;
 
         } else {
-            // deteksi route yang sedang dipanggil
             $routeName = \Route::currentRouteName();
 
+            if ($routeName === 'resultcheck.str25') {
+                return view('resultcheck_str25'); // bikin file resources/views/resultcheck_str25.blade.php
+            }
             if ($routeName === 'tagcheck.str25') {
-                return view('event_str25'); // bikin file resources/views/event_str25.blade.php
+                return view('tagcheck_str25');
+            }
+            if ($routeName === 'resultcheck.ukr25') {
+                return view('resultcheck_ukr25'); // bikin file resources/views/resultcheck_str25.blade.php
+            }
+            if ($routeName === 'tagcheck.ukr25') {
+                return view('tagcheck_ukr25');
+            }
+            if ($routeName === 'resultcheck.ugmtr25') {
+                return view('resultcheck_ugmtr25'); // bikin file resources/views/resultcheck_str25.blade.php
+            }
+            if ($routeName === 'tagcheck.ugmtr25') {
+                return view('tagcheck_ugmtr25');
             }
 
             // default ke halaman index biasa
