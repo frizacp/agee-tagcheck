@@ -47,7 +47,7 @@ function chipCode() {
 @section('header')
 <style>
 body {
-    background-image: url('/img/bgcheck.jpg');
+    background-image: url('/img/ukr25.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
@@ -102,7 +102,7 @@ h1 {
 <input type="text" class="border-0" autofocus style="width: 100%; height: 100%; position: fixed" autocomplete="off" id="code" onchange="chipCode()">
 <div class="bibTag">
     <div class="text-center mt-4">
-        <img src="/img/logo_qrispr25.png" alt="Logo" style="max-width: 130px; margin-bottom: 10px;" class='mt-5'>
+        <img src="/img/logo_ukr25.png" alt="Logo" style="max-width: 300px; margin-bottom: 10px;" class='mt-3'>
         <h2 class="text-uppercase mt-3 mb-3" id="resultName" style="color: #FFFFFF">Name</h2>
         <h5 class="text-uppercase" id="contest" style="color: #FFFFFF">Contest</h5>
         <h2 class="text-uppercase" id="resultBib" style="color: #FFFFFF">bib</h2>
