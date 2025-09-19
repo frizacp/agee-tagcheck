@@ -103,6 +103,7 @@ h1 {
 <div class="bibTag">
     <div class="text-center mt-4">
         <img src="/img/logo_ukr25.png" alt="Logo" style="max-width: 300px; margin-bottom: 10px;" class='mt-3'>
+                <h4 class="text-uppercase mt-3 mb-3" style="background-color: #990000; color: #FFFFFF ; padding-top: 10px; padding-bottom: 10px;">BIB CHECK</h4>
         <h2 class="text-uppercase mt-3 mb-3" id="resultName" style="color: #FFFFFF">Name</h2>
         <h5 class="text-uppercase" id="contest" style="color: #FFFFFF">Contest</h5>
         <h2 class="text-uppercase" id="resultBib" style="color: #FFFFFF">bib</h2>
