@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,9 +49,17 @@
         }
 
         @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .main-title {
@@ -180,15 +189,15 @@
             .events-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .main-title {
                 font-size: 2.2rem;
             }
-            
+
             .event-buttons {
                 flex-direction: column;
             }
-            
+
             .event-btn {
                 min-width: auto;
             }
@@ -199,6 +208,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -209,12 +219,24 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        .event-card:nth-child(2) { animation-delay: 0.1s; }
-        .event-card:nth-child(3) { animation-delay: 0.2s; }
-        .event-card:nth-child(4) { animation-delay: 0.3s; }
-        .event-card:nth-child(5) { animation-delay: 0.4s; }
+        .event-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .event-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .event-card:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .event-card:nth-child(5) {
+            animation-delay: 0.4s;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -223,16 +245,6 @@
         </div>
 
         <div class="events-grid">
-            <!-- Slemantemplerun 2025 Event -->
-            <div class="event-card">
-                <div class="event-title">
-                    Slemantemplerun 2025
-                </div>
-                <div class="event-buttons">
-                    <a href="/resultcheck/str25" class="event-btn btn-result">Result Check</a>
-                    <a href="/tagcheck/str25" class="event-btn btn-tag">Tag Check</a>
-                </div>
-            </div>
             <div class="event-card">
                 <div class="event-title">
                     UGM Trailrun 2025
@@ -242,18 +254,20 @@
                     <a href="/tagcheck/ugmtr25" class="event-btn btn-tag">Tag Check</a>
                 </div>
             </div>
-            <div class="event-card">
-                <div class="event-title">
-                    UKIRUN 2025
-                </div>
-                <div class="event-buttons">
-                    <a href="/resultcheck/ukr25" class="event-btn btn-result">Result Check</a>
-                    <a href="/tagcheck/ukr25" class="event-btn btn-tag">Tag Check</a>
-                </div>
-            </div>
 
-            <!-- Template untuk event lain - tinggal copy paste dan ganti isinya -->
-            <!-- 
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-title">
+                        Musi Half Marathon
+                    </div>
+                    <div class="event-buttons">
+                        <a href="/resultcheck/mhm25" class="event-btn btn-result">Result Check</a>
+                        <a href="/tagcheck/mhm25" class="event-btn btn-tag">Tag Check</a>
+                    </div>
+                </div>
+
+                <!-- Template untuk event lain - tinggal copy paste dan ganti isinya -->
+                <!-- 
             <div class="event-card">
                 <div class="event-title">
                     <svg class="event-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -268,7 +282,8 @@
             </div>
             -->
 
+            </div>
         </div>
-    </div>
 </body>
+
 </html>
