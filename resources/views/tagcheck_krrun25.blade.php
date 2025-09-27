@@ -133,9 +133,9 @@
     <input type="text" class="border-0" autofocus style="width: 100%; height: 100%; position: fixed" autocomplete="off" id="code" onchange="chipCode()">
     <div class="bibTag text-center">
         <div class='mt-2'>
-            <h2 class="text-uppercase mt-3" id="resultName" style="color: #FFFFFF">Name</h2>
-            <h5 class="text-uppercase" id="category" style="color: #FFFFFF">Category</h5>
-            <h2 class="text-uppercase" id="resultBib" style="color: #FFFFFF">bib</h2>
+            <h2 class="text-uppercase mt-3" id="resultName" style="color: #030713">Name</h2>
+            <h5 class="text-uppercase" id="category" style="color: #030713">Category</h5>
+            <h2 class="text-uppercase" id="resultBib" style="color: #030713">bib</h2>
         </div>
     </div>
 </div>
