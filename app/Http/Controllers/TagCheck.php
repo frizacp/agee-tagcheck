@@ -53,6 +53,12 @@ class TagCheck extends Controller
             if ($routeName === 'tagcheck.pml25') {
                 return view('tagcheck_pml25');
             }
+            if ($routeName === 'resultcheck.krrun25') {
+                return view('resultcheck_krrun25'); // bikin file resources/views/resultcheck_str25.blade.php
+            }
+            if ($routeName === 'tagcheck.krrun25') {
+                return view('tagcheck_krrun25');
+            }
 
             // default ke halaman index biasa
             return view('index');

@@ -277,6 +277,17 @@
                     </div>
                 </div>
             </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-title">
+                        KRRUN 2025
+                    </div>
+                    <div class="event-buttons">
+                        <a href="/resultcheck/krrun25" class="event-btn btn-result">Result Check</a>
+                        <a href="/tagcheck/krrun25" class="event-btn btn-tag">Tag Check</a>
+                    </div>
+                </div>
+            </div>
         </div>
 </body>
 

@@ -14,4 +14,7 @@ Route::controller(TagCheck::class)->group(function () {
 
     Route::get('/tagcheck/pml25', 'index')->name('tagcheck.pml25');
     Route::get('/resultcheck/pml25', 'index')->name('resultcheck.pml25');
+
+    Route::get('/tagcheck/krrun25', 'index')->name('tagcheck.krrun25');
+    Route::get('/resultcheck/krrun25', 'index')->name('resultcheck.krrun25');
 });
