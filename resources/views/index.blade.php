@@ -245,50 +245,27 @@
         </div>
 
         <div class="events-grid">
+            @php
+            $events = [
+            ['title' => 'KRRUN 2025', 'slug' => 'krrun25'],
+            ['title' => 'BIOSFER 2025', 'slug' => 'bios25'],
+            ];
+            @endphp
+
+            @foreach ($events as $event)
             <div class="event-card">
                 <div class="event-title">
-                    UGM Trailrun 2025
+                    {{ $event['title'] }}
                 </div>
                 <div class="event-buttons">
-                    <a href="/resultcheck/ugmtr25" class="event-btn btn-result">Result Check</a>
-                    <a href="/tagcheck/ugmtr25" class="event-btn btn-tag">Tag Check</a>
+                    <a href="/resultcheck/{{ $event['slug'] }}" class="event-btn btn-result">Result Check</a>
+                    <a href="/tagcheck/{{ $event['slug'] }}" class="event-btn btn-tag">Tag Check</a>
                 </div>
             </div>
-
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-title">
-                        Musi Half Marathon
-                    </div>
-                    <div class="event-buttons">
-                        <a href="/resultcheck/mhm25" class="event-btn btn-result">Result Check</a>
-                        <a href="/tagcheck/mhm25" class="event-btn btn-tag">Tag Check</a>
-                    </div>
-                </div>
-            </div>
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-title">
-                        Pamella 2025
-                    </div>
-                    <div class="event-buttons">
-                        <a href="/resultcheck/pml25" class="event-btn btn-result">Result Check</a>
-                        <a href="/tagcheck/pml25" class="event-btn btn-tag">Tag Check</a>
-                    </div>
-                </div>
-            </div>
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-title">
-                        KRRUN 2025
-                    </div>
-                    <div class="event-buttons">
-                        <a href="/resultcheck/krrun25" class="event-btn btn-result">Result Check</a>
-                        <a href="/tagcheck/krrun25" class="event-btn btn-tag">Tag Check</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+    </div>
 </body>
+
 
 </html>

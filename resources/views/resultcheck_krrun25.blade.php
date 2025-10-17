@@ -15,7 +15,7 @@
         }, 10000);
 
         $.ajax({
-            url: "{{ route('tagcheck.index') }}",
+            url: "{{ url()->current() }}",
             type: "GET",
             data: {
                 _token: "{{ csrf_token() }}",

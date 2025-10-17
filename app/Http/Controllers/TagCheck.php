@@ -8,132 +8,117 @@ use Illuminate\Http\Request;
 
 class TagCheck extends Controller
 {
-    public static function index(Request $request)
+    public function index(Request $request, $type = null, $event = null)
     {
-        if ($request->key == 'show') {
-            $data   =   TagResult::where('chipcode', 'LIKE', "%" . $request->code)->first();
+        // API MODE: jika request dari AJAX / API
+        if ($request->key === 'show') {
+            $data = TagResult::where('chipcode', 'LIKE', "%" . $request->code)->first();
 
             if (!$data) {
-                $return['status']   =   400;
-                $return['msg']      =   'No data found';
-                return $return;
+                return response()->json([
+                    'status' => 400,
+                    'msg' => 'No data found'
+                ]);
             }
 
-            $payload    =   [
-                'bib'           =>  $data->bib,
-                'firstName'     =>  $data->firstName,
-                'lastName'      =>  $data->lastName,
-                'time'          =>  $data->finishtime,
-                'contest'       =>  $data->contest . $data->category,
-                'category'       =>  strtoupper($data->contest . ' ' . $data->gender . ' ' . $data->category),
-                'pace'          =>  'PACE ' . $data->pace
+            $payload = [
+                'bib' => $data->bib,
+                'firstName' => $data->firstName,
+                'lastName' => $data->lastName,
+                'time' => $data->finishtime,
+                'contest' => $data->contest . $data->category,
+                'category' => strtoupper($data->contest . ' ' . $data->gender . ' ' . $data->category),
+                'pace' => 'PACE ' . $data->pace,
             ];
 
-            $return['status']   =   200;
-            $return['msg']      =   'Data found';
-            $return['data']     =   $payload;
-            return $return;
-        } else {
-            $routeName = \Route::currentRouteName();
-            if ($routeName === 'resultcheck.ugmtr25') {
-                return view('resultcheck_ugmtr25'); // bikin file resources/views/resultcheck_str25.blade.php
-            }
-            if ($routeName === 'tagcheck.ugmtr25') {
-                return view('tagcheck_ugmtr25');
-            }
-            if ($routeName === 'resultcheck.mhm25') {
-                return view('resultcheck_mhm25'); // bikin file resources/views/resultcheck_str25.blade.php
-            }
-            if ($routeName === 'tagcheck.mhm25') {
-                return view('tagcheck_mhm25');
-            }
-            if ($routeName === 'resultcheck.pml25') {
-                return view('resultcheck_pml25'); // bikin file resources/views/resultcheck_str25.blade.php
-            }
-            if ($routeName === 'tagcheck.pml25') {
-                return view('tagcheck_pml25');
-            }
-            if ($routeName === 'resultcheck.krrun25') {
-                return view('resultcheck_krrun25'); // bikin file resources/views/resultcheck_str25.blade.php
-            }
-            if ($routeName === 'tagcheck.krrun25') {
-                return view('tagcheck_krrun25');
-            }
-
-            // default ke halaman index biasa
-            return view('index');
-        }
-    }
-
-    public static function findall()
-    {
-        $data   =   TagResult::all();
-
-        if (!$data) {
-            $return['status']   =   400;
-            $return['msg']      =   'No data found';
-            return $return;
-        }
-
-        $return['status']   =   200;
-        $return['msg']      =   'Data found';
-        $return['data']     =   $data;
-        return $return;
-    }
-
-    public static function update(Request $request)
-    {
-        $data   =   $request->data;
-
-        foreach ($data as $key => $value) {
-            $update =   TagResult::where('chipcode', $value['chipcode'])->update([
-                'finishtime'    =>  $value['finishtime'],
-                'chiptime'      =>  $value['chiptime'],
-                'pace'          =>  $value['pace'],
+            return response()->json([
+                'status' => 200,
+                'msg' => 'Data found',
+                'data' => $payload
             ]);
         }
 
-        if ($update) {
-            $return['status']   =   200;
-            $return['msg']      =   'Data updated';
-            $return['data']     =   $data;
-        } else {
-            $return['status']   =   400;
-            $return['msg']      =   'Data failed to update';
+        // BROWSER MODE: menampilkan view sesuai route
+        if (!$type || !$event) {
+            return view('index');
         }
 
-        return $return;
+        // Pastikan path-nya valid (resultcheck atau tagcheck)
+        if (in_array($type, ['resultcheck', 'tagcheck'])) {
+            $viewName = "{$type}_{$event}";
+
+            if (view()->exists($viewName)) {
+                return view($viewName);
+            }
+
+            abort(404, "View for {$type} {$event} not found.");
+        }
+
+        return view('index');
     }
 
-    public static function store(Request $request)
+    public function findall()
     {
-        $data   =   $request->data;
+        $data = TagResult::all();
 
-        foreach ($data as $key => $value) {
-            $insert             =   new TagResult;
-            $insert->bib        =   $value['bib'];
-            $insert->firstName  =   $value['firstName'];
-            $insert->lastName   =   $value['lastName'];
-            $insert->gender     =   $value['gender'];
-            $insert->type       =   $value['type'];
-            $insert->dob        =   $value['dob'];
-            $insert->age        =   $value['age'];
-            $insert->contest    =   $value['contest'];
-            $insert->race       =   $value['race'];
-            $insert->chipcode   =   $value['chipcode'];
-
-            $insert->save();
+        if ($data->isEmpty()) {
+            return response()->json([
+                'status' => 400,
+                'msg' => 'No data found'
+            ]);
         }
 
-        if ($insert) {
-            $return['status']   =   200;
-            $return['msg']      =   'Data inserted';
-            $return['data']     =   $data;
-        } else {
-            $return['status']   =   400;
-            $return['msg']      =   'Data failed to insert';
+        return response()->json([
+            'status' => 200,
+            'msg' => 'Data found',
+            'data' => $data
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->data ?? [];
+        $success = false;
+
+        foreach ($data as $value) {
+            $success = TagResult::where('chipcode', $value['chipcode'])->update([
+                'finishtime' => $value['finishtime'],
+                'chiptime' => $value['chiptime'],
+                'pace' => $value['pace'],
+            ]);
         }
 
-        return $return;
+        return response()->json([
+            'status' => $success ? 200 : 400,
+            'msg' => $success ? 'Data updated' : 'Failed to update data',
+            'data' => $data
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->data ?? [];
+        $inserted = false;
+
+        foreach ($data as $value) {
+            $inserted = TagResult::create([
+                'bib' => $value['bib'],
+                'firstName' => $value['firstName'],
+                'lastName' => $value['lastName'],
+                'gender' => $value['gender'],
+                'type' => $value['type'],
+                'dob' => $value['dob'],
+                'age' => $value['age'],
+                'contest' => $value['contest'],
+                'race' => $value['race'],
+                'chipcode' => $value['chipcode'],
+            ]);
+        }
+
+        return response()->json([
+            'status' => $inserted ? 200 : 400,
+            'msg' => $inserted ? 'Data inserted' : 'Failed to insert data',
+            'data' => $data
+        ]);
     }
 }

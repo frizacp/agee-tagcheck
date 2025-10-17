@@ -1,13 +1,13 @@
 @extends('layouts.tagging')
 
-@section('title', 'TAGCHECK MUSI HALF MARATHON')
+@section('title', 'TAGCHECK KRRUN25')
 
 @section('footer')
 <script>
     // Konfigurasi background image berdasarkan kategori
     const categoryBackgrounds = {
-        '5KUMUM': '/img/pml25.webp',
-        'default': '/img/pml25.webp' // fallback image
+        '5KUMUM': '/img/bios25.png',
+        'default': '/img/bios25.png' // fallback image
     };
 
     function updateBackground(category) {
@@ -28,7 +28,7 @@
         }, 10000);
 
         $.ajax({
-            url: "{{ route('tagcheck.index') }}",
+            url: "{{ url()->current() }}",
             type: "GET",
             data: {
                 _token: "{{ csrf_token() }}",
@@ -73,7 +73,7 @@
 @section('header')
 <style>
     body {
-        background-image: url('/img/pml25.webp');
+        background-image: url('/img/bios25.png');
         /* Default background */
         background-size: cover;
         background-repeat: no-repeat;
@@ -122,6 +122,13 @@
         font-weight: bold !important;
     }
 
+    .img-logo {
+        display: block;
+        margin: 0 auto;
+        max-width: 350px;
+        height: auto;
+    }
+
     .bibTag {
         padding-top: 20px
     }
@@ -132,11 +139,11 @@
 <div class="d-flex justify-content-center align-items-center" style="height: 100vh; flex-direction: column;">
     <input type="text" class="border-0" autofocus style="width: 100%; height: 100%; position: fixed" autocomplete="off" id="code" onchange="chipCode()">
     <div class="bibTag text-center">
-        <div class='mt-2'>
-            <img src="/img/logo_pml25.png" alt="" style="max-width: 200px; height: auto;">
-            <h2 class="text-uppercase mt-3" id="resultName" style="color: #FFFFFF">Name</h2>
-            <h5 class="text-uppercase" id="category" style="color: #FFFFFF">Category</h5>
-            <h2 class="text-uppercase" id="resultBib" style="color: #FFFFFF">bib</h2>
+        <div class=''>
+            <img src="/img/bios25_logo.png" alt="BIOS25 logo" class="img-logo">
+            <h2 class="text-uppercase mt-3" id="resultName" style="color: #00ABA4">Name</h2>
+            <h5 class="text-uppercase" id="category" style="color: #030713">Category</h5>
+            <h2 class="text-uppercase" id="resultBib" style="color: #FF5F01">bib</h2>
         </div>
     </div>
 </div>

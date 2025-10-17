@@ -1,6 +1,6 @@
 @extends('layouts.tagging')
 
-@section('title', 'RESULT UGM TRAILRUN 2025')
+@section('title', 'RESULT KRRUN 2025')
 
 @section('footer')
 <script>
@@ -15,7 +15,7 @@
         }, 10000);
 
         $.ajax({
-            url: "{{ route('tagcheck.index') }}",
+            url: "{{ url()->current() }}",
             type: "GET",
             data: {
                 _token: "{{ csrf_token() }}",
@@ -56,7 +56,7 @@
 
     body {
         /* Properti background dari kode Anda */
-        background-image: url('/img/ugmtr25_result.webp');
+        background-image: url('/img/bg_krrun25.webp');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: top;
@@ -116,7 +116,7 @@
 <input type="text" class="border-0" autofocus style="width: 100%; height: 100%; position: fixed" autocomplete="off" id="code" onchange="chipCode()">
 <div class="bibTag text-center">
     <div class="mt-4">
-        <h4 class="text-uppercase mt-5 mb-3 px-5" style="background-color: #021C41; color: #FFFFFF ; padding-top: 10px; padding-bottom: 10px;">CONGRATULATION</h4>
+        <h4 class="text-uppercase mt-5 mb-3 px-5" style="background-color: #137063; color: #FFFFFF ; padding-top: 10px; padding-bottom: 10px;">CONGRATULATION</h4>
         <h2 class="text-uppercase mt-3" id="resultName" style="color: #1B1B1B">NAME</h2>
         <div class="d-flex justify-content-center align-items-center" style="gap: 60px; margin-top: 50px;">
             <div>
