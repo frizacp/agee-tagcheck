@@ -249,6 +249,7 @@
             $events = [
             ['title' => 'KRRUN 2025', 'slug' => 'krrun25'],
             ['title' => 'BIOSFER 2025', 'slug' => 'bios25'],
+            ['title' => 'SSR 2025', 'slug' => 'ssr25'],
             ];
             @endphp
 
@@ -258,7 +259,6 @@
                     {{ $event['title'] }}
                 </div>
                 <div class="event-buttons">
-                    <a href="/resultcheck/{{ $event['slug'] }}" class="event-btn btn-result">Result Check</a>
                     <a href="/tagcheck/{{ $event['slug'] }}" class="event-btn btn-tag">Tag Check</a>
                 </div>
             </div>
