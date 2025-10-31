@@ -1,13 +1,13 @@
 @extends('layouts.tagging')
 
-@section('title', 'TAGCHECK KRRUN25')
+@section('title', 'TAGCHECK SSR25')
 
 @section('footer')
 <script>
     // Konfigurasi background image berdasarkan kategori
     const categoryBackgrounds = {
-        '5KUMUM': '/img/bios25.png',
-        'default': '/img/bios25.png' // fallback image
+        '5KUMUM': '/img/muria25.webp',
+        'default': '/img/muria25.webp' // fallback image
     };
 
     function updateBackground(category) {
@@ -73,7 +73,7 @@
 @section('header')
 <style>
     body {
-        background-image: url('/img/bios25.png');
+        background-image: url('/img/muria25.webp');
         /* Default background */
         background-size: cover;
         background-repeat: no-repeat;
@@ -125,12 +125,20 @@
     .img-logo {
         display: block;
         margin: 0 auto;
-        max-width: 350px;
+        width: 300px;
         height: auto;
     }
 
     .bibTag {
-        padding-top: 20px
+        padding-top: 5px;
+        padding-bottom: 50px;
+    }
+
+    .img-logo {
+        display: block;
+        margin: 0 auto;
+        width: 1000px;
+        height: auto;
     }
 </style>
 @endsection
@@ -138,12 +146,12 @@
 @section('content')
 <div class="d-flex justify-content-center align-items-center" style="height: 100vh; flex-direction: column;">
     <input type="text" class="border-0" autofocus style="width: 100%; height: 100%; position: fixed" autocomplete="off" id="code" onchange="chipCode()">
-    <div class="bibTag text-center">
-        <div class=''>
-            <img src="/img/bios25_logo.png" alt="BIOS25 logo" class="img-logo">
-            <h2 class="text-uppercase mt-3" id="resultName" style="color: #00ABA4">Name</h2>
-            <h5 class="text-uppercase" id="category" style="color: #030713">Category</h5>
-            <h2 class="text-uppercase" id="resultBib" style="color: #FF5F01">bib</h2>
+
+    <div class="bibTag text-center mt-5">
+        <div class='mt-5'>
+            <h2 class="text-uppercase mt-4" id="resultName" style="color: #191919">NAMA</h2>
+            <h5 class="text-uppercase" id="category" style="color: #191919">KATEGORI</h5>
+            <h2 class="text-uppercase" id="resultBib" style="color: #191919">BIB</h2>
         </div>
     </div>
 </div>

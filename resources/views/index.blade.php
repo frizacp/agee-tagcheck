@@ -247,9 +247,8 @@
         <div class="events-grid">
             @php
             $events = [
-            ['title' => 'KRRUN 2025', 'slug' => 'krrun25'],
-            ['title' => 'BIOSFER 2025', 'slug' => 'bios25'],
-            ['title' => 'SSR 2025', 'slug' => 'ssr25'],
+            ['title' => 'JEPARUN 2025', 'slug' => 'jprun25'],
+            ['title' => 'MURIA TRAIL 2025', 'slug' => 'muria25'],
             ];
             @endphp
 

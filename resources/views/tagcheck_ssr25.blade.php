@@ -1,6 +1,6 @@
 @extends('layouts.tagging')
 
-@section('title', 'TAGCHECK KRRUN25')
+@section('title', 'TAGCHECK SSR25')
 
 @section('footer')
 <script>
@@ -132,6 +132,13 @@
     .bibTag {
         padding-top: 5px;
         padding-bottom: 50px;
+    }
+
+    .img-logo {
+        display: block;
+        margin: 0 auto;
+        max-width: 100px;
+        height: auto;
     }
 </style>
 @endsection
