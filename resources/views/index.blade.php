@@ -249,6 +249,7 @@
             $events = [
             ['title' => 'JEPARUN 2025', 'slug' => 'jprun25'],
             ['title' => 'MURIA TRAIL 2025', 'slug' => 'muria25'],
+            ['title' => 'BROMO TENGGER SEMERU 2025', 'slug' => 'bts25'],
             ];
             @endphp
 
